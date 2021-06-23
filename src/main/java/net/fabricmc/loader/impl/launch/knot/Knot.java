@@ -34,6 +34,7 @@ import org.spongepowered.asm.launch.MixinBootstrap;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
+import net.fabricmc.loader.api.entrypoint.PreInitEntrypoint;
 import net.fabricmc.loader.impl.FabricLoaderImpl;
 import net.fabricmc.loader.impl.entrypoint.EntrypointUtils;
 import net.fabricmc.loader.impl.game.GameProvider;
@@ -144,6 +145,8 @@ public final class Knot extends FabricLauncherBase {
 		loader.setGameProvider(provider);
 		loader.load();
 		loader.freeze();
+
+		EntrypointUtils.invoke("preInit", PreInitEntrypoint.class, PreInitEntrypoint::onPreInit);
 
 		FabricLoaderImpl.INSTANCE.loadAccessWideners();
 
