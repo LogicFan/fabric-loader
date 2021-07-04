@@ -14,20 +14,19 @@
  * limitations under the License.
  */
 
-package net.fabricmc.loader.impl.util.version;
+package net.fabricmc.loader.impl.util.log.log4j;
 
-import java.util.function.Predicate;
-
-import net.fabricmc.loader.api.VersionParsingException;
-
-public final class StringVersionPredicateParser {
-	public static Predicate<StringVersion> create(String text) throws VersionParsingException {
-		final String compared = text.trim();
-
-		if (compared.equals("*")) {
-			return (t) -> true;
-		} else {
-			return (t) -> compared.equals(t.getFriendlyString());
-		}
-	}
+/**
+ * Minimal bridge/emulation for {@link org.apache.logging.log4j.Level}.
+ *
+ * @deprecated Only for bridging purposes, don't use otherwise!
+ */
+@Deprecated
+public final class Level {
+	public static final Level FATAL = new Level();
+	public static final Level ERROR = new Level();
+	public static final Level WARN = new Level();
+	public static final Level INFO = new Level();
+	public static final Level DEBUG = new Level();
+	public static final Level TRACE = new Level();
 }
