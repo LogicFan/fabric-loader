@@ -27,6 +27,10 @@ repositories {
 		name = 'mojang'
 		url = 'https://libraries.minecraft.net/'
 	}
+	maven {
+		name = 'sponge'
+		url = 'https://repo.spongepowered.org/repository/maven-public/'
+	}
 }
 
 sourceSets {
@@ -53,7 +57,11 @@ dependencies {
 	annotationProcessor "org.ow2.asm:asm-tree:${project.asm_version}"
 	annotationProcessor "org.ow2.asm:asm-util:${project.asm_version}"
 
-	implementation('net.fabricmc:sponge-mixin:0.9.4+mixin.0.8.2') {
+//	implementation('net.fabricmc:sponge-mixin:0.9.4+mixin.0.8.2') {
+//		exclude module: 'launchwrapper'
+//		exclude module: 'guava'
+//	}
+	implementation('org.spongepowered:mixin:0.8.3') {
 		exclude module: 'launchwrapper'
 		exclude module: 'guava'
 	}
